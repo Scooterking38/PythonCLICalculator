@@ -93,13 +93,14 @@ num_one = args.num_one
 num_two = args.num_two
 
 result = None
-if operation == "add":
-    result = add(num_one, num_two)
-elif operation == "subtract":
-    result = subtract(num_one, num_two)
-elif operation == "multiply":
-    result = multiply(num_one, num_two)
-else:
-    result = divide(num_one, num_two)
+match operation:
+    case "add":
+        result = add(num_one, num_two)
+    case "subtract":
+        result = subtract(num_one, num_two)
+    case "multiply":
+        result = multiply(num_one, num_two)
+    case _:
+        result = divide(num_one, num_two)
 
 print(f"Result: {result}")
