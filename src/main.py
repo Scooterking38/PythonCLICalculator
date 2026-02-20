@@ -9,7 +9,7 @@ __version__ = 1.0
 
 from argparse import ArgumentParser
 
-def add(num1: float, num2: float) -> float:
+def operate(num1: float, operator: str, num2: float) -> float:
     '''Adds two floats together and return the sum.
 
        :param num1: float, The first number to add
@@ -23,8 +23,8 @@ def add(num1: float, num2: float) -> float:
         print(sum) # 3.0
        ```
     '''
-    sum = num1 + num2
-    return sum
+    eval(f'result = {num1}{operator}{num2}')
+    return result
 
 def subtract(num1: float, num2: float) -> float:
     '''Subtract two floats and return the difference.
@@ -93,13 +93,9 @@ num_one = args.num_one
 num_two = args.num_two
 
 result = None
-if operation == "add":
-    result = add(num_one, num_two)
-elif operation == "subtract":
-    result = subtract(num_one, num_two)
-elif operation == "multiply":
-    result = multiply(num_one, num_two)
-else:
-    result = divide(num_one, num_two)
+ops = ['+','-','*','/']
+choicelist = ['add','subtract','multiply','divide']
+result = operate(num_one,ops[choicelist.index(operation)],num_two)
+
 
 print(f"Result: {result}")
